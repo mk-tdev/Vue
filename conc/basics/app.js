@@ -25,29 +25,46 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 10,
-      name: "",
+      name: "Muthu",
+      age: 30,
       confirmedName: "",
     };
+  },
+  computed: {
+    fullName() {
+      console.log("fullName");
+      return this.name + "Kumar";
+    },
   },
   methods: {
     confirmName() {
       this.confirmedName = this.name;
     },
+    getModifiedName() {
+      return "Some name";
+    },
     increment() {
+      console.log("increment");
       this.counter = this.counter + 1;
     },
     incrementByFive(inVal) {
+      console.log("incrementByFive");
       this.counter = this.counter + inVal;
     },
     decrement() {
       this.counter--;
     },
     setName(e, lname) {
-      this.name = e.target.value + " " + lname;
+      this.name = e.target.value;
     },
     submitForm(event) {
       console.log("Submitted");
       // event.preventDefault();
+    },
+    reset() {
+      this.name = "";
+      this.age = "";
+      this.confirmedName = "";
     },
   },
 });

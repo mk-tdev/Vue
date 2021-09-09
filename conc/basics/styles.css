@@ -28,7 +28,8 @@ button {
   cursor: pointer;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
   padding: 8px;
   border-radius: 0;
   border: 0;

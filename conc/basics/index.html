@@ -24,10 +24,19 @@
   </section> -->
 
   <section id="events">
-    <input type="text" v-on:input="setName($event, 'Kumar')" v-on:keyup.enter="confirmName">
-    <p>Your Name is {{confirmedName}}</p>
+    <h2>Events</h2>
 
-    <h2>Click Events</h2>
+    <input type="text" placeholder="your name" v-bind:value="name" v-on:input="setName($event, 'Kumar')"
+      v-on:keyup.enter="confirmName">
+
+    <input type="number" placeholder="age" v-model='age'>
+
+    <p>Your Name is {{confirmedName}} and age is {{age}}</p>
+
+    <p>Test {{fullName}}</p>
+
+    <button v-on:click="reset">Reset</button>
+
 
     <button v-on:click="increment">Add</button>
     <button v-on:click="counter--">Substract</button>
