@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 0.5rem;
+  background-color: #35495e;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+section {
+  padding: 0.5rem;
+}
+
+button {
+  padding: 8px;
+  border-radius: 0;
+  border: 0;
+  margin: 10px;
+  background-color: #35495e;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 0;
+  border: 0;
+  margin: 10px;
+  background-color: #35495e;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}

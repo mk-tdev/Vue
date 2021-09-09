@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h2>Vue</h2>
+  </header>
+
+  <!-- <section id="user-goal">
+    <span v-html="courseGoalTemplate">My Course Goals</span>
+    <p>{{outputGoal()}}</p>
+    <p>Learn more <a v-bind:href="vueLink">here</a></p>
+
+    <p>Year: {{2000 + 21}}</p>
+    <img v-bind:src="bookImg" alt="Book" height="150">
+  </section> -->
+
+  <section id="events">
+    <input type="text" v-on:input="setName($event, 'Kumar')" v-on:keyup.enter="confirmName">
+    <p>Your Name is {{confirmedName}}</p>
+
+    <h2>Click Events</h2>
+
+    <button v-on:click="increment">Add</button>
+    <button v-on:click="counter--">Substract</button>
+    <button v-on:click="incrementByFive(5)">Add 5</button>
+
+    <p v-once>Starting Value: {{counter}}</p>
+    <p>Result: {{counter}}</p>
+
+    <h3>Form</h3>
+
+    <form v-on:submit.prevent="submitForm">
+      <input type="text" name="" id="">
+      <button>Sign In</button>
+    </form>
+  </section>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+#app {
+  margin: 3rem auto;
+  min-width: 40rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+label, input {
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: .5rem 0;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
