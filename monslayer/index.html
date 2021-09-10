@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monslayer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h2>Monslayer</h2>
+  </header>
+
+  <div id="game">
+    <section id="monster" class="container">
+      <h2>Monster Health {{monsterHealth}}</h2>
+      <div class="healthbar">
+        <div v-bind:style="monsterBarStyles" class="healthbar__value"></div>
+      </div>
+    </section>
+
+    <section id="player" class="container">
+      <h2>Your Health {{playerHealth}}</h2>
+      <div class="healthbar">
+        <div :style="playerBarStyles" class="healthbar__value"></div>
+      </div>
+    </section>
+
+    <section class="container" v-if="winner">
+      <h2>Game Over!</h2>
+      <h3 v-if="winner === 'Monster'">You lost!</h3>
+      <h3 v-else-if="winner === 'Player'">You won!</h3>
+      <h3 v-else>It's a Draw!</h3>
+      <button @click="reset">Reset</button>
+    </section>
+
+    <section id="controls" v-else>
+      <button v-on:click="attackMonster">ATTACK</button>
+      <button :disabled="eligleForSpecial" @click="specialAttackMonster">SPECIAL ATTACK</button>
+      <button @click="healPlayer">HEAL</button>
+      <button @click="surrender">SURRENDER</button>
+    </section>
+
+    <section id="log" class="container">
+      <h2>Battle Log</h2>
+      <ul>
+        <li v-for="(l, index) in logs" :key="index">
+          <span :class="{'log--player': l.actionBy === 'Player', 'log--monster': l.actionBy !== 'Player'}">{{l.actionBy
+            === 'Player' ? 'Player':'Monster'}}</span>
+
+          <span v-if="l.actionType === 'Heal'">
+            heals himself for <span class="log--heal">{{l.actionValue}}</span>
+          </span>
+
+          <span v-else>
+            attacks and deals <span class="log--damage">{{l.actionValue}}</span>
+          </span>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+
+</body>
+
+</html>
