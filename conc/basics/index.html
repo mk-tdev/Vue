@@ -15,6 +15,7 @@
   </header>
 
   <!-- <section id="user-goal">
+    <h2>Basics</h2>
     <span v-html="courseGoalTemplate">My Course Goals</span>
     <p>{{outputGoal()}}</p>
     <p>Learn more <a v-bind:href="vueLink">here</a></p>
@@ -23,22 +24,21 @@
     <img v-bind:src="bookImg" alt="Book" height="150">
   </section> -->
 
-  <section id="events">
+  <!-- <section id="events">
     <h2>Events</h2>
 
-    <input type="text" placeholder="your name" v-bind:value="name" v-on:input="setName($event, 'Kumar')"
+    <input type="text" placeholder="your name" :value="name" v-on:input="setName($event, 'Kumar')"
       v-on:keyup.enter="confirmName">
 
     <input type="number" placeholder="age" v-model='age'>
 
-    <p>Your Name is {{confirmedName}} and age is {{age}}</p>
+    <p>Your Confimed Name is {{confirmedName ? confirmedName : '_'}} and age is {{age}}</p>
 
-    <p>Test {{fullName}}</p>
+    <p>Full name: {{fullName}}</p>
 
     <button v-on:click="reset">Reset</button>
 
-
-    <button v-on:click="increment">Add</button>
+    <button @click="increment">Add</button>
     <button v-on:click="counter--">Substract</button>
     <button v-on:click="incrementByFive(5)">Add 5</button>
 
@@ -51,7 +51,17 @@
       <input type="text" name="" id="">
       <button>Sign In</button>
     </form>
+  </section> -->
+
+  <section id="styling">
+    <h3>{{title}}</h3>
+    <div class="demo" v-bind:class="boxAClasses" @click="boxSelected('A')"></div>
+    <div class="demo" :class="{'active' : boxBSelected}" @click="boxSelected('B')"></div>
+    <div :class="[{'active' : boxCSelected},'demo']" @click="boxSelected('C')"></div>
+
+    <button @click="updateBoxAState">Test</button>
   </section>
+
 
   <script src="https://unpkg.com/vue@next"></script>
   <script src="app.js"></script>

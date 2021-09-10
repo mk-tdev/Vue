@@ -39,3 +39,16 @@ input[type="number"] {
   cursor: pointer;
   outline: none;
 }
+
+.demo {
+  cursor: pointer;
+  border: 4px solid #ccc;
+  min-height: 50px;
+  margin: 10px auto;
+  width: calc(100% - 30px);
+}
+
+.active {
+  border-color: slateblue;
+  background-color: slategray;
+}
