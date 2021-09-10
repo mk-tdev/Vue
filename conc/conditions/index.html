@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h2>Conditional Rendering</h2>
+  </header>
+  <section id="todo">
+    <h3>{{title}}</h3>
+
+    <div class="todo">
+      <div>
+        <input type="text" v-model="todo">
+        <button v-on:click="addTodo"> Add Todo</button>
+      </div>
+      <p v-if="todos.length === 0">No items added, go ahead and add one!</p>
+      <p v-else-if="todos.length > 10">Exceeds Limit!</p>
+      <ul v-else>
+        <li v-for="(todoItem, index) in todos" :key="todoItem" v-on:click="removeTodo(index)">
+          {{index}}. {{todoItem}}
+
+          <input type="text" v-on:click.stop>
+        </li>
+      </ul>
+
+      <!-- <ul>
+        <li v-for="(item, key, index) in {name: 'Mk', age: 31, favColor: 'blue'}" :key="index">
+          {{index}} - {{key}}: {{item}}
+        </li>
+      </ul> -->
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
