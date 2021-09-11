@@ -4,7 +4,11 @@
   <section class="container">
     <ul>
       <li v-for="movie of movies" :key="movie.id">
-        <MovieDetail :movie="movie" />
+        <MovieDetail
+          :movie="movie"
+          :isFav="movie.isFavorite"
+          @toggle-favorite="toggleFavState"
+        />
       </li>
     </ul>
   </section>
@@ -22,26 +26,28 @@ const App = {
   data() {
     return {
       title: "Movies",
-      showDetails: true,
       movies: [
         {
           id: "lor",
           name: "Lord Of the Rings",
           year: 2001,
           director: "Peter Jackson",
+          isFavorite: false,
         },
         {
           id: "ave",
           name: "The Avengers",
           year: 2012,
           director: "Joss Whedon",
+          isFavorite: false,
         },
       ],
     };
   },
   methods: {
-    toggleDisplay() {
-      this.showDetails = !this.showDetails;
+    toggleFavState(id) {
+      const movie = this.movies.find((movie) => movie.id === id);
+      movie.isFavorite = !movie.isFavorite;
     },
   },
 };
