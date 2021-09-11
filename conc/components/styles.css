@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 0.1rem 0.5rem;
+  background-color: #35495e;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#app {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  min-width: calc(100% - 30px);
+}
+
+li {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px;
+  border-radius: 0;
+  border: 0;
+  background-color: #35495e;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  box-shadow: none;
+  color: #3f3f3f;
+  cursor: not-allowed;
+}
