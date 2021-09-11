@@ -6,7 +6,6 @@
       :id="movie.id"
       :movie-name="movie.name"
       :director="movie.director"
-      @select-movie="$emit('select-movie', $event)"
     ></movies-element>
   </ul>
 </template>
@@ -15,7 +14,7 @@
 export default {
   // props: ["movies"],
   inject: ["movies"],
-  emits: ["select-movie"],
+  // emits: ["select-movie"],
 };
 </script>
 

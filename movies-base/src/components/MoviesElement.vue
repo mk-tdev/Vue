@@ -2,7 +2,7 @@
   <li>
     <h3>{{ movieName }}</h3>
     <p>{{ director }}</p>
-    <button @click="$emit(selectMovie)">Read More</button>
+    <button @click="selectMovie(id)">Read More</button>
     <!-- <button @click="$emit('select-movie', id)">Read More</button> -->
   </li>
 </template>

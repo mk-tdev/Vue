@@ -9,7 +9,7 @@
   >
   </active-element>
 
-  <movies-base @select-movie="selectMovie"></movies-base>
+  <movies-base></movies-base>
   <!-- <movies-base :movies="movies" @select-movie="selectMovie"></movies-base> -->
 </template>
 
@@ -19,6 +19,7 @@ export default {
   provide() {
     return {
       movies: this.movies,
+      selectMovie: this.selectMovie,
     };
   },
   methods: {
