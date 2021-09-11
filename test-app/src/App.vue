@@ -1,6 +1,8 @@
 <template>
   <Header :title="title" />
 
+  <new-movie @add-movie="addMovie"></new-movie>
+
   <section class="container">
     <ul>
       <li v-for="movie of movies" :key="movie.id">
@@ -8,6 +10,7 @@
           :movie="movie"
           :isFav="movie.isFavorite"
           @toggle-favorite="toggleFavState"
+          @delete="deleteMovie"
         />
       </li>
     </ul>
@@ -48,6 +51,20 @@ const App = {
     toggleFavState(id) {
       const movie = this.movies.find((movie) => movie.id === id);
       movie.isFavorite = !movie.isFavorite;
+    },
+    addMovie(name, year, director) {
+      const newMovie = {
+        id: new Date().toISOString(),
+        name: name,
+        year: year,
+        director: director,
+        isFavorite: false,
+      };
+
+      this.movies.unshift(newMovie);
+    },
+    deleteMovie(id) {
+      this.movies = this.movies.filter((movie) => movie.id !== id);
     },
   },
 };

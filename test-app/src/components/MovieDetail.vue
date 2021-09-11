@@ -1,13 +1,14 @@
 <template>
   <h2>{{ movie.name }} {{ isFav ? "(Fav)" : null }}</h2>
 
-  <p>{{ msg }}</p>
-
   <button @click="toggleDisplay">
     {{ showDetails ? "Hide" : "Show" }} Details
   </button>
   <button @click="toggleFav">
     Toggle Fav
+  </button>
+  <button @click="$emit('delete', movie.id)">
+    Delete
   </button>
 
   <ul v-if="showDetails">
@@ -36,6 +37,9 @@ export default {
       console.log(!!id);
       return !!id;
     },
+    "delete": function() {
+      return true;
+    }
   },
   // props: ["movie"],
   props: {
