@@ -8,14 +8,16 @@
 
     <button @click="setTodo">Set Todo</button>
 
-    <error-alert v-if="inputIsInvalid">
-      <template #default>
-        <p>
-          Something went wrong
-        </p>
-        <button @click="confirmError">Okay</button>
-      </template>
-    </error-alert>
+    <teleport to="body">
+      <error-alert v-if="inputIsInvalid">
+        <template #default>
+          <p>
+            Something went wrong
+          </p>
+          <button @click="confirmError">Okay</button>
+        </template>
+      </error-alert>
+    </teleport>
   </div>
 </template>
 

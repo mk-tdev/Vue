@@ -5,10 +5,12 @@
     <button @click="setSelectedComp('manage-todo')">Manage Todo</button>
     <button @click="setSelectedComp('active-todo')">Active Todo</button>
 
+    <h4>Using regular display</h4>
     <manage-todo v-if="selectedComponent === 'manage-todo'"></manage-todo>
     <active-todo v-if="selectedComponent === 'active-todo'"></active-todo>
 
     <!-- alternative for conditional rendering -->
+    <h4>Using keep alive/component</h4>
     <keep-alive>
       <component :is="selectedComponent"> </component>
     </keep-alive>
