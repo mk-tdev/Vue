@@ -11,6 +11,13 @@
       :role="activeUser.role"
       :info-text="activeUser.description"
     ></UserInfo>
+
+    <todo-list>
+      <template #default="slotProps">
+        <!-- {{ slotProps }} -->
+        <h2>{{ slotProps.todo }} {{ slotProps["anotherProp"] }}</h2>
+      </template>
+    </todo-list>
   </div>
 </template>
 
@@ -18,6 +25,7 @@
 import TheHeader from "./components/Header.vue";
 import UserInfo from "./components/UserInfo.vue";
 import BadgeList from "./components/BadgeList.vue";
+import TodoList from "./components/TodoList.vue";
 
 export default {
   name: "App",
@@ -25,6 +33,7 @@ export default {
     TheHeader,
     UserInfo,
     BadgeList,
+    TodoList,
   },
   methods: {
     setText() {
