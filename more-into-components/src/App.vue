@@ -8,6 +8,7 @@
     <manage-todo v-if="selectedComponent === 'manage-todo'"></manage-todo>
     <active-todo v-if="selectedComponent === 'active-todo'"></active-todo>
 
+    <!-- alternative for conditional rendering -->
     <keep-alive>
       <component :is="selectedComponent"> </component>
     </keep-alive>
@@ -69,7 +70,7 @@ export default {
   data() {
     return {
       message: "",
-      selectedComponent: "active-todo",
+      selectedComponent: "manage-todo",
       activeUser: {
         name: "Muthu Kumar",
         description: "Frontend Developer",
