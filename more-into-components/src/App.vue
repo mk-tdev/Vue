@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import TheHeader from "./components/Header.vue";
+import TheHeader from "./components/layout/Header.vue";
 import UserInfo from "./components/UserInfo.vue";
 import BadgeList from "./components/BadgeList.vue";
 import TodoList from "./components/TodoList.vue";
