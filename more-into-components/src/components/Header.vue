@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>More on Vue Components</h1>
+    <h2>More on Vue Components</h2>
   </header>
 </template>
 
@@ -11,14 +11,14 @@ export default {};
 <style>
 header {
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #093b97;
+  background-color: #062153;
 }
 
-header h1 {
+header h2 {
   color: white;
   margin: 0;
 }

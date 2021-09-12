@@ -5,6 +5,7 @@
 
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
     </div>
+    <p>{{ infoText }}</p>
   </section>
 </template>
 
