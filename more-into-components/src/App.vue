@@ -1,6 +1,8 @@
 <template>
   <div>
     <TheHeader />
+    <input type="text" ref="welcomeTxt" v-on:keyup.enter="setText" />
+    {{ message }}
 
     <BadgeList />
 
@@ -24,8 +26,14 @@ export default {
     UserInfo,
     BadgeList,
   },
+  methods: {
+    setText() {
+      this.message = this.$refs.welcomeTxt.value;
+    },
+  },
   data() {
     return {
+      message: "",
       activeUser: {
         name: "Muthu Kumar",
         description: "Frontend Developer",
