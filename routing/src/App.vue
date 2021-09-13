@@ -13,6 +13,7 @@ export default {
   components: {
     TheNavigation,
   },
+  mounted() {},
   data() {
     return {
       activePage: "teams-list",

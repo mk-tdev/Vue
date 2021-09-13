@@ -7,6 +7,7 @@ import BaseButton from "./components/UI/BaseButton.vue";
 import BaseDialog from "./components/UI/BaseDialog.vue";
 
 import TeamsList from "./components/teams/TeamsList.vue";
+import TeamMembers from "./components/teams/TeamMembers.vue";
 import UsersList from "./components/users/UsersList.vue";
 
 // https://next.router.vuejs.org/guide/#javascript
@@ -17,15 +18,19 @@ const routes = [
     component: TeamsList,
   },
   {
+    path: "/teams/:teamId",
+    component: TeamMembers,
+  },
+  {
     path: "/users",
     component: UsersList,
   },
 ];
 
-const router = createRouter({ 
+const router = createRouter({
   history: createWebHistory(),
   routes,
-  linkActiveClass: 'active'
+  linkActiveClass: "active",
 });
 
 const app = createApp(App);

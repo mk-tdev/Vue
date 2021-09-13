@@ -9,23 +9,48 @@
         :role="member.role"
       ></user-item>
     </ul>
+
+    <router-link to="/teams/t2">Go to 2</router-link>
   </section>
 </template>
 
 <script>
-import UserItem from '../users/UserItem.vue';
+import UserItem from "../users/UserItem.vue";
 
 export default {
   components: {
-    UserItem
+    UserItem,
   },
+  watch: {
+    $route(newRoute) {
+      this.loadTeamMembers(newRoute);
+    },
+  },
+  methods: {
+    loadTeamMembers(route) {
+      const teamId = route.params.teamId;
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    // console.log(this.$route);
+    this.loadTeamMembers(this.$route);
+  },
+  inject: ["users", "teams"],
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: "",
+      members: [],
     };
   },
 };
@@ -48,5 +73,13 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: #545457;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="confirmNavigation">Confirm</button>
+  <button @click="confirmNavigation">Go Back</button>
   <ul>
     <user-item
       v-for="user in users"
