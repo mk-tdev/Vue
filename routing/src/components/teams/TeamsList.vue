@@ -8,6 +8,10 @@
       :member-count="team.members.length"
     ></teams-item>
   </ul>
+
+  <h4 style="text-align: center">Nested Routes</h4>
+
+  <router-view></router-view>
 </template>
 
 <script>

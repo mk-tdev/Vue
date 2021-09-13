@@ -20,13 +20,20 @@ const routes = [
   {
     path: "/teams",
     component: TeamsList,
+    children: [
+      {
+        path: ":teamId",
+        component: TeamMembers,
+        props: true,
+      },
+    ],
     // alias: "/", // intead of putting a separate entry for '/'
   },
-  {
-    path: "/teams/:teamId",
-    component: TeamMembers,
-    props: true,
-  },
+  // {
+  //   path: "/teams/:teamId",
+  //   component: TeamMembers,
+  //   props: true,
+  // },
   {
     path: "/users",
     component: UsersList,
