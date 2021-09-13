@@ -20,6 +20,7 @@ const routes = [
   {
     path: "/teams/:teamId",
     component: TeamMembers,
+    props: true,
   },
   {
     path: "/users",
