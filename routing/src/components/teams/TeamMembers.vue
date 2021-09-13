@@ -46,6 +46,10 @@ export default {
     console.log(this.$route);
     this.loadTeamMembers(this.teamId);
   },
+  beforeRouteUpdate(to, from, next) {
+    // console.log("beforeRouteUpdate", to, from);
+    next();
+  },
   inject: ["users", "teams"],
   data() {
     return {

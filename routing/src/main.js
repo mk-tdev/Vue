@@ -22,6 +22,7 @@ const routes = [
   {
     name: "teams",
     path: "/teams",
+    meta: { needsAuth: true },
     components: {
       default: TeamsList,
       footer: TeamsFooter,
@@ -45,6 +46,10 @@ const routes = [
     name: "users",
     path: "/users",
     components: { default: UsersList, footer: UsersFooter },
+    beforeEnter: (to, from, next) => {
+      console.log({ to, from });
+      next();
+    },
   },
   {
     path: "/:notFound(.*)",
@@ -56,6 +61,21 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   linkActiveClass: "active",
+  scrollBehavior(to, from, savedPosition) {
+    // console.log({ to, from, savedPosition });
+
+    return savedPosition ? savedPosition : { left: 0, top: 0 };
+  },
+});
+
+router.beforeEach((to, from, next) => {
+  // console.log({ to, from });
+
+  next();
+});
+
+router.afterEach((to, from, failure) => {
+  console.log("failed navigation", failure);
 });
 
 const app = createApp(App);
