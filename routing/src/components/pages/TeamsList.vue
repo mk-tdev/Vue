@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import TeamsItem from "./TeamsItem.vue";
+import TeamsItem from "../teams/TeamsItem.vue";
 
 export default {
   components: {
