@@ -1,19 +1,46 @@
 <template>
+  <router-view v-slot="slotProps">
+    <transition name="fade-button" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
+
+  <div class="container">
+    <list-data></list-data>
+  </div>
+
   <div class="container">
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">
       Animate
     </button>
   </div>
+
+  <div class="container">
+    <transition
+      name="jpara"
+      @before-enter="beforeEnterTransition"
+      @before-leave="beforeLeaveTransition"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
+      <p v-if="jpVisible">Using Javascript Animate me!</p>
+    </transition>
+
+    <button @click="updateJPVisible">Toggle JS P!</button>
+  </div>
+
   <div class="container">
     <transition
       name="para"
       @before-enter="beforeEnterTransition"
       @before-leave="beforeLeaveTransition"
       @enter="enter"
-      @after-enter="enter"
-      @leave="enter"
-      @after-leave="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
     >
       <p v-if="isPVisible">This is visible sometimes</p>
     </transition>
@@ -39,15 +66,20 @@
 </template>
 
 <script>
+import ListData from "./components/ListData.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    ListData,
+  },
   data() {
     return {
       dialogIsVisible: false,
       animatedBlock: false,
       isPVisible: false,
       userDisplay: false,
+      jpVisible: false,
     };
   },
   methods: {
@@ -56,6 +88,9 @@ export default {
     },
     updatePVisible() {
       this.isPVisible = !this.isPVisible;
+    },
+    updateJPVisible() {
+      this.jpVisible = !this.jpVisible;
     },
     showDialog() {
       this.dialogIsVisible = true;
@@ -68,12 +103,43 @@ export default {
     },
     beforeEnterTransition(el) {
       console.log("beforeEnterTransition: ", el);
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      console.log("enter: ", el);
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.opacity = round * 0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
+    afterEnter(el) {
+      console.log("afterEnter: ", el);
+    },
+    leave(el, done) {
+      console.log("leave: ", el);
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.opacity = 1 - round * 0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     beforeLeaveTransition(el) {
       console.log("beforeLeaveTransition: ", el);
+      el.style.opacity = 1;
     },
-    enter(el) {
-      console.log("enter: ", el);
+    afterLeave(el) {
+      console.log("afterLeave: ", el);
     },
   },
 };
@@ -112,12 +178,12 @@ button:active {
 }
 .container {
   max-width: 40rem;
-  margin: 2rem auto;
+  margin: 0.7rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem;
   border: 2px solid #ccc;
   border-radius: 3px;
 }
