@@ -14,8 +14,13 @@ import UsersList from "./components/users/UsersList.vue";
 
 const routes = [
   {
+    path: "/",
+    redirect: "/teams",
+  },
+  {
     path: "/teams",
     component: TeamsList,
+    // alias: "/", // intead of putting a separate entry for '/'
   },
   {
     path: "/teams/:teamId",
@@ -25,6 +30,10 @@ const routes = [
   {
     path: "/users",
     component: UsersList,
+  },
+  {
+    path: "/:notFound(.*)",
+    redirect: "/teams",
   },
 ];
 
