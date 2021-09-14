@@ -4,7 +4,7 @@ import App from "./App.vue";
 import BaseContainer from "./components/UI/BaseContainer.vue";
 import BaseButton from "./components/UI/BaseButton.vue";
 
-import store from "./store";
+import store from "./store/index";
 
 const app = createApp(App);
 
