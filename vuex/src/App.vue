@@ -1,9 +1,11 @@
 <template>
   <base-container title="Vuex" :mode="'g'">
+    <p>{{ $store.state.counter }}</p>
+
     <the-counter></the-counter>
     <fav-value></fav-value>
 
-    <base-button @click="addOne">Add</base-button>
+    <base-button @click="addOne">Add 10</base-button>
 
     <change-counter></change-counter>
   </base-container>
@@ -19,7 +21,9 @@ export default {
   computed: {},
   methods: {
     addOne() {
-      this.$store.state.counter++;
+      // this.$store.commit({ type: "increment" });
+
+      this.$store.dispatch({ type: "increase", value: 10 });
     },
   },
 };

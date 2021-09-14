@@ -1,6 +1,6 @@
 <template>
   <base-button @click="addOne">
-    Add 3
+    Add
   </base-button>
 </template>
 
@@ -9,7 +9,8 @@ export default {
   methods: {
     addOne() {
       // this.$store.commit("increase", { value: 3 });
-      this.$store.commit({ type: "increase", value: 3 });
+      // this.$store.commit({ type: "increase", value: 3 });
+      this.$store.dispatch("increment");
     },
   },
 };
