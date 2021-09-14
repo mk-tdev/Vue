@@ -25,9 +25,7 @@ export default {
       return (this.product.price * this.product.qty).toFixed(2);
     },
   },
-  mounted() {
-    console.log(this.product);
-  },
+  mounted() {},
 };
 </script>
 

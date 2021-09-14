@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     remove(id) {
-      console.log("id:", id);
       this.$store.dispatch("cart/removeFromCart", { prodId: id });
     },
   },

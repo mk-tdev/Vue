@@ -4,9 +4,13 @@
       <img src="../assets/logo.png" height="25" />
       <router-link to="/products">Products</router-link>
       <router-link to="/cart">Cart ({{ cartQty }})</router-link>
+      <router-link v-if="userIsAuthenticated" to="/products">Admin</router-link>
     </div>
     <div>
-      <base-button :mode="'flat'">Login</base-button>
+      <base-button v-if="!userIsAuthenticated" @click="login" :mode="'flat'"
+        >Login</base-button
+      >
+      <base-button v-else @click="logout" :mode="'flat'">Logout</base-button>
     </div>
   </header>
 </template>
@@ -16,6 +20,17 @@ export default {
   computed: {
     cartQty() {
       return this.$store.getters["cart/cartQty"];
+    },
+    userIsAuthenticated() {
+      return this.$store.getters.userIsAuthenticated;
+    },
+  },
+  methods: {
+    login() {
+      this.$store.dispatch("setAuthLogin");
+    },
+    logout() {
+      this.$store.dispatch("setAuthLogout");
     },
   },
 };
