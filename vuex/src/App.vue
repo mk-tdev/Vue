@@ -1,8 +1,7 @@
 <template>
   <base-container title="Vuex" :mode="'g'">
-    <h3>{{ counter }}</h3>
-
     <the-counter></the-counter>
+    <fav-value></fav-value>
 
     <base-button @click="addOne">Add</base-button>
 
@@ -12,15 +11,12 @@
 
 <script>
 import ChangeCounter from "./components/ChangeCounter.vue";
+import FavValue from "./components/FavValue.vue";
 import TheCounter from "./components/TheCounter.vue";
 export default {
-  components: { TheCounter, ChangeCounter },
+  components: { TheCounter, ChangeCounter, FavValue },
   name: "App",
-  computed: {
-    counter() {
-      return this.$store.state.counter;
-    },
-  },
+  computed: {},
   methods: {
     addOne() {
       this.$store.state.counter++;
