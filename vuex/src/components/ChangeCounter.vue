@@ -21,7 +21,7 @@ export default {
     //   this.$store.dispatch("increment");
     // },
     // ...mapActions(["increment", "increase"]),
-    ...mapActions({
+    ...mapActions("points", {
       inc: "increment",
       incr: "increase",
     }),
