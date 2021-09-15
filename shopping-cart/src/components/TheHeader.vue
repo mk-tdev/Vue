@@ -45,6 +45,9 @@ header {
   box-shadow: rgb(161, 160, 160) 0px 1px 4px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
 header > div {

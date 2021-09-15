@@ -35,6 +35,8 @@ export default {
 .products {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1000px) {

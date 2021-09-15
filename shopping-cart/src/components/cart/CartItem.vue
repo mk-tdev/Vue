@@ -11,7 +11,7 @@
 
       <p>Total ${{ itemTotal }}</p>
 
-      <base-button @click="$emit('remove-item', product.productId)"
+      <base-button :mode="'r'" @click="$emit('remove-item', product.productId)"
         >Remove</base-button
       >
     </div>
@@ -40,6 +40,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 500px;
 }
 
 img {

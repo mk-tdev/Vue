@@ -1,12 +1,14 @@
 <template>
-  <h2>Your Cart</h2>
+  <div>
+    <h2>Your Cart</h2>
 
-  <hr />
+    <hr />
 
-  <h4>Total Amount: ${{ cartTotal }}</h4>
+    <h4>Total Amount: ${{ cartTotal }}</h4>
 
-  <div v-for="cartItem in cartItems" :key="cartItem.productId">
-    <cart-item :product="cartItem" @removeItem="remove"></cart-item>
+    <div v-for="cartItem in cartItems" :key="cartItem.productId">
+      <cart-item :product="cartItem" @removeItem="remove"></cart-item>
+    </div>
   </div>
 </template>
 <script>

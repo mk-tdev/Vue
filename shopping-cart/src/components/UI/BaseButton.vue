@@ -32,4 +32,11 @@ button:hover {
 button.flat {
   border: 0;
 }
+
+button.g:hover {
+  background-color: #41b883;
+}
+button.r:hover {
+  background-color: #b84941;
+}
 </style>
