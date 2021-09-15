@@ -1,10 +1,6 @@
 <template>
   <section>
-    Detail of Coaches
-
-    <router-link to="/coaches/c1/contact">Contact</router-link>
-
-    <router-view></router-view>
+    <router-link :to="'/coaches'">Back</router-link>
   </section>
 
   <section>
@@ -24,9 +20,16 @@
   <section>
     <base-container>
       <h2>Interested? Reach out now!</h2>
-      <base-link :to="coachContactLink" label="Contact" mode="dark" />
+      <base-link
+        :to="coachContactLink"
+        label="Contact"
+        mode="dark"
+        v-if="!$route.path.includes('contact')"
+      />
 
-      <router-view></router-view>
+      <div class="contact">
+        <router-view></router-view>
+      </div>
     </base-container>
   </section>
 </template>
@@ -44,7 +47,7 @@ export default {
       return this.selectedCoach.firstName + " " + this.selectedCoach.lastName;
     },
     coachContactLink() {
-      return `${this.$route.path}/${this.id}/contact`;
+      return `${this.$route.path}/contact`;
     },
     areas() {
       return this.selectedCoach.areas;
@@ -64,4 +67,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.contact {
+  padding: 1rem 0;
+}
+</style>

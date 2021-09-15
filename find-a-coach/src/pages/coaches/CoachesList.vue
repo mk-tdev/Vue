@@ -6,7 +6,12 @@
   <section>
     <div class="controls">
       <base-button :mode="'dark'">Refresh</base-button>
-      <base-link to="/register" label="Register as Coach" mode="dark" />
+      <base-link
+        to="/register"
+        label="Register as Coach"
+        mode="dark"
+        v-if="!isCoach"
+      />
     </div>
 
     <div v-if="hasCoaches">
@@ -51,6 +56,9 @@ export default {
     },
   },
   computed: {
+    isCoach() {
+      return this.$store.getters["coaches/isCoach"];
+    },
     filteredCoaches() {
       const coaches = this.$store.getters["coaches/coaches"];
 

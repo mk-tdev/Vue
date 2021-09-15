@@ -10,6 +10,7 @@ const store = createStore({
   state() {
     return {
       isLoggedIn: false,
+      userId: "c5",
     };
   },
   mutations: {
@@ -28,6 +29,9 @@ const store = createStore({
   getters: {
     userIsAuthenticated(state) {
       return state.isLoggedIn;
+    },
+    userId(state) {
+      return state.userId;
     },
   },
 });
