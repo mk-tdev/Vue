@@ -1,4 +1,5 @@
 <template>
+<div>
   <section>
     <router-link :to="'/coaches'">Back</router-link>
   </section>
@@ -32,6 +33,7 @@
       </div>
     </base-container>
   </section>
+  </div>
 </template>
 
 <script>

@@ -6,10 +6,28 @@
     </div>
     <div>
       <router-link to="/coaches">All Coaches</router-link>
-      <router-link to="/requests">Requests </router-link>
+      <router-link to="/requests" v-if="isAuthenticated">Requests </router-link>
+      <router-link to="/auth" v-if="!isAuthenticated">Login </router-link>
+      <base-button @click="logout" v-if="isAuthenticated">Logout</base-button>
     </div>
   </header>
 </template>
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.replace("/coaches");
+    },
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+};
+</script>
+
 <style scoped>
 header {
   margin: 0;

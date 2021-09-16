@@ -186,6 +186,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .filters {
   display: flex;

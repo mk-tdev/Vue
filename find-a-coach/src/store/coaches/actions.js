@@ -33,6 +33,7 @@ export default {
   },
   async registerCoach(context, payload) {
     const userId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
     const coachData = {
       firstName: payload.first,
       lastName: payload.last,
@@ -41,7 +42,7 @@ export default {
       hourlyRate: payload.rate,
     };
 
-    const response = await fetch(`${apiUrl}/coaches/${userId}.json`, {
+    const response = await fetch(`${apiUrl}/coaches/${userId}.json?auth=${token}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
