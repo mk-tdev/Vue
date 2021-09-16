@@ -88,8 +88,8 @@ export default {
   },
   data() {
     return {
-      email: "test@test.com",
-      password: "testing",
+      email: "",
+      password: "",
       isFormValid: true,
       mode: "login",
       isError: null,

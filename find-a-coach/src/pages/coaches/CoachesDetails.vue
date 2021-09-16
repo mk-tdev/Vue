@@ -1,38 +1,38 @@
 <template>
-<div>
-  <section>
-    <router-link :to="'/coaches'">Back</router-link>
-  </section>
+  <div>
+    <section>
+      <base-link :to="'/coaches'" label="Back" mode="dark" />
+    </section>
 
-  <section>
-    <base-container>
-      <h2>{{ fullName }}</h2>
-      <h3>${{ rate }}/hour</h3>
-      <base-badge
-        v-for="(area, index) in areas"
-        :key="index"
-        :label="area"
-        :type="area"
-      ></base-badge>
-      <p>{{ description }}</p>
-    </base-container>
-  </section>
+    <section>
+      <base-container>
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
+        <base-badge
+          v-for="(area, index) in areas"
+          :key="index"
+          :label="area"
+          :type="area"
+        ></base-badge>
+        <p>{{ description }}</p>
+      </base-container>
+    </section>
 
-  <section>
-    <base-container>
-      <h2>Interested? Reach out now!</h2>
-      <base-link
-        :to="coachContactLink"
-        label="Contact"
-        mode="dark"
-        v-if="!$route.path.includes('contact')"
-      />
+    <section>
+      <base-container>
+        <h2>Interested? Reach out now!</h2>
+        <base-link
+          :to="coachContactLink"
+          label="Contact"
+          mode="dark"
+          v-if="!$route.path.includes('contact')"
+        />
 
-      <div class="contact">
-        <router-view></router-view>
-      </div>
-    </base-container>
-  </section>
+        <div class="contact">
+          <router-view></router-view>
+        </div>
+      </base-container>
+    </section>
   </div>
 </template>
 
