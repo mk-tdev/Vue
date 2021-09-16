@@ -1,32 +1,47 @@
 <template>
-  <section>
-    <coach-filter @changeFilter="setFilter"></coach-filter>
-  </section>
+  <div>
+    <base-dialog
+      :show="!!isError"
+      title="An error occured!"
+      @close="handleError"
+    >
+      {{ isError }}
+    </base-dialog>
+    <section>
+      <coach-filter @changeFilter="setFilter"></coach-filter>
+    </section>
 
-  <section>
-    <div class="controls">
-      <base-button :mode="'dark'">Refresh</base-button>
-      <base-link
-        to="/register"
-        label="Register as Coach"
-        mode="dark"
-        v-if="!isCoach"
-      />
-    </div>
+    <section>
+      <div class="controls">
+        <base-button :mode="'dark'" @click="loadCoaches(true)"
+          >Click to Refresh</base-button
+        >
+        <base-link
+          to="/register"
+          label="Register as Coach"
+          mode="dark"
+          v-if="!isCoach && !isLoading"
+        />
+      </div>
 
-    <div v-if="hasCoaches">
-      <CoachItem
-        v-for="(coach, index) in filteredCoaches"
-        :key="index"
-        :id="coach.id"
-        :firstName="coach.firstName"
-        :lastName="coach.lastName"
-        :rate="coach.hourlyRate"
-        :areas="coach.areas"
-      />
-    </div>
-    <h3 v-else>No Coaches found.</h3>
-  </section>
+      <div class="loader" v-if="isLoading">
+        <base-spinner></base-spinner>
+      </div>
+
+      <div v-else-if="hasCoaches">
+        <CoachItem
+          v-for="(coach, index) in filteredCoaches"
+          :key="index"
+          :id="coach.id"
+          :firstName="coach.firstName"
+          :lastName="coach.lastName"
+          :rate="coach.hourlyRate"
+          :areas="coach.areas"
+        />
+      </div>
+      <h3 v-else>No Coaches found.</h3>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -40,6 +55,8 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
+      isError: null,
       activeFilters: {
         swimming: true,
         running: true,
@@ -50,9 +67,26 @@ export default {
       },
     };
   },
+  created() {
+    this.loadCoaches();
+  },
   methods: {
     setFilter(filters) {
       this.activeFilters = filters;
+    },
+    async loadCoaches(refresh = false) {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("coaches/loadCoaches", {
+          forceRefresh: refresh,
+        });
+      } catch (error) {
+        this.isError = error.message || "Something went wrong!";
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.isError = false;
     },
   },
   computed: {
@@ -85,7 +119,7 @@ export default {
       });
     },
     hasCoaches() {
-      return this.$store.getters["coaches/hasCoaches"];
+      return !this.isLoading && this.$store.getters["coaches/hasCoaches"];
     },
   },
 };
@@ -101,5 +135,9 @@ ul {
 .controls {
   margin: 1rem 2rem;
   padding: 0;
+}
+.loader {
+  display: flex;
+  justify-content: center;
 }
 </style>

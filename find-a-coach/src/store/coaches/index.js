@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      lastFetch: null,
       coaches: [
         {
           id: "c1",
@@ -17,7 +18,7 @@ export default {
           hourlyRate: 30,
         },
         {
-          id: "c1",
+          id: "c2",
           firstName: "Karen",
           lastName: "Gillan",
           areas: ["swimming", "running", "dance"],
@@ -26,7 +27,7 @@ export default {
           hourlyRate: 70,
         },
         {
-          id: "c1",
+          id: "c3",
           firstName: "Emily",
           lastName: "Blunt",
           areas: ["swimming", "running"],
@@ -35,7 +36,7 @@ export default {
           hourlyRate: 40,
         },
         {
-          id: "c1",
+          id: "c4",
           firstName: "Dwayne",
           lastName: "Johnson",
           areas: ["acting", "dance", "wrestling"],
