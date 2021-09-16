@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp, defineAsyncComponent } from "vue";
 import App from "./App.vue";
 import router from "./router/router";
 import store from "./store/store";
@@ -9,7 +9,11 @@ import BaseCheckBox from "./components/base/BaseCheckBox.vue";
 import BaseLink from "./components/base/BaseLink.vue";
 import BaseBadge from "./components/base/BaseBadge.vue";
 import BaseSpinner from "./components/base/BaseSpinner.vue";
-import BaseDialog from "./components/base/BaseDialog.vue";
+// import BaseDialog from "./components/base/BaseDialog.vue";
+
+const BaseDialog = defineAsyncComponent(() =>
+  import("./components/base/BaseDialog.vue")
+);
 
 const app = createApp(App);
 

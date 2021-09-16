@@ -1,10 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { defineAsyncComponent } from "vue";
 
-import CoachesDetails from "../pages/coaches/CoachesDetails.vue";
-import CoachesRegister from "../pages/coaches/CoachesRegister.vue";
+// import CoachesDetails from "../pages/coaches/CoachesDetails.vue";
+const CoachesDetails = defineAsyncComponent(() =>
+  import("../pages/coaches/CoachesDetails.vue")
+);
+// import CoachesRegister from "../pages/coaches/CoachesRegister.vue";
+const CoachesRegister = defineAsyncComponent(() =>
+  import("../pages/coaches/CoachesRegister.vue")
+);
 import CoachesList from "../pages/coaches/CoachesList.vue";
-import ContactCoaches from "../pages/requests/ContactCoaches.vue";
-import RequestsReceived from "../pages/requests/RequestsReceived.vue";
+// import ContactCoaches from "../pages/requests/ContactCoaches.vue";
+const ContactCoaches = defineAsyncComponent(() =>
+  import("../pages/requests/ContactCoaches.vue")
+);
+// import RequestsReceived from "../pages/requests/RequestsReceived.vue";
+const RequestsReceived = defineAsyncComponent(() =>
+  import("../pages/requests/RequestsReceived.vue")
+);
 import UserAuth from "../pages/auth/UserAuth.vue";
 import NotFound from "../pages/NotFound.vue";
 import store from "../store/store";
