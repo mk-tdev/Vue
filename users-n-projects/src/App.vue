@@ -13,7 +13,7 @@ import ProjectList from "./components/projects/ProjectList.vue";
 import UserList from "./components/users/UserList.vue";
 import USER_DATA from "./mock-data";
 
-console.log(USER_DATA);
+import { ref } from "vue";
 
 export default {
   name: "App",
@@ -22,16 +22,19 @@ export default {
     ProjectList,
     UserList,
   },
-  data() {
+  setup() {
+    const selectedUser = ref(null);
+    const activeUsers = USER_DATA;
+
+    function selectUser(uid) {
+      selectedUser.value = activeUsers.find((usr) => usr.id === uid);
+    }
+
     return {
-      selectedUser: null,
-      activeUsers: USER_DATA,
+      selectedUser,
+      activeUsers,
+      selectUser,
     };
-  },
-  methods: {
-    selectUser(uid) {
-      this.selectedUser = this.activeUsers.find((usr) => usr.id === uid);
-    },
   },
 };
 </script>

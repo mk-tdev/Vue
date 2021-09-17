@@ -45,7 +45,7 @@ button.dark:hover {
 }
 
 button.selected {
-  box-shadow: #333 0px 1px 20px 5px;
+  box-shadow: rgb(109, 107, 107) 0px 1px 5px 5px;
 }
 
 button.g:hover {
