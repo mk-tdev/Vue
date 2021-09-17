@@ -1,1 +1,5 @@
 git add . && git commit -m='components' && git push
+
+
+npm install vue-router@4
+npm install vuex@next --save
