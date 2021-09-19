@@ -56,7 +56,7 @@ export default {
     } = useSearch(users, "fullName");
 
     const { sorting, sort, displayedItems: displayedUsers } = useSort(
-      availableUsers
+      availableUsers, 'fullName'
     );
 
     return {
