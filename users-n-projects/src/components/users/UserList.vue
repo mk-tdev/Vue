@@ -37,7 +37,9 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, toRefs } from "vue";
+import useSearch from "../../hooks/search";
+
 import UserItem from "./UserItem.vue";
 
 export default {
@@ -45,26 +47,12 @@ export default {
   props: ["users"],
   emits: ["list-projects"],
   setup(props) {
-    const enteredSearchTerm = ref("");
-    const activeSearchTerm = ref("");
-
-    const availableUsers = computed(() => {
-      let users = [];
-      if (activeSearchTerm.value) {
-        users = props.users.filter((usr) =>
-          usr.fullName
-            .toUpperCase()
-            .includes(activeSearchTerm.value.toUpperCase())
-        );
-      } else if (props.users) {
-        users = props.users;
-      }
-      return users;
-    });
-
-    function updateSearch(val) {
-      enteredSearchTerm.value = val;
-    }
+    const {users} = toRefs(props);
+    const {
+      enteredSearchTerm,
+      availableItems: availableUsers,
+      updateSearch,
+    } = useSearch(users, "fullName");
 
     const sorting = ref(null);
 
@@ -89,19 +77,9 @@ export default {
       sorting.value = mode;
     }
 
-    watch(enteredSearchTerm, (newV) => {
-      setTimeout(() => {
-        if (newV === enteredSearchTerm.value) {
-          activeSearchTerm.value = newV;
-        }
-      }, 300);
-    });
-
     return {
       enteredSearchTerm,
-      activeSearchTerm,
       sorting,
-      availableUsers,
       displayedUsers,
       updateSearch,
       sort,
