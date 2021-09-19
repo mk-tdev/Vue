@@ -1,5 +1,12 @@
 <template>
   <section>
+    <base-dialog
+      v-if="isDialogVisible"
+      :title="'Do you want to add?'"
+      @close="hideDialog"
+    >
+      <p>Are you sure about that?</p>
+    </base-dialog>
     <h2>Add a product</h2>
     <form @submit.prevent="submitForm">
       <div>
@@ -18,35 +25,43 @@
           v-model.trim="enteredDescription"
         ></textarea>
       </div>
-      <base-button>Add Product</base-button>
+      <base-button mode="g">Add Product</base-button>
     </form>
   </section>
 </template>
 
 <script>
+import BaseDialog from "../BaseDialog.vue";
+
 import { ref, inject } from "vue";
-import { useRouter } from "vue-router";
+
+import useAlert from "../../hooks/app-alert";
 
 export default {
+  components: { BaseDialog },
   setup() {
     const addProduct = inject("addProduct");
-    const router = useRouter();
 
     const enteredTitle = ref("Product Name");
     const enteredPrice = ref(10);
     const enteredDescription = ref("Good product");
 
+    const { isDialogVisible, showDialog, hideDialog } = useAlert();
+
     function submitForm() {
+      showDialog();
       addProduct({
         title: enteredTitle,
         description: enteredDescription,
         price: enteredPrice,
       });
 
-      router.push("/allproducts");
+      showDialog();
     }
 
     return {
+      isDialogVisible,
+      hideDialog,
       enteredTitle,
       enteredPrice,
       enteredDescription,

@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
 button {
-  padding: 0.5em 1.2em;
+  padding: 0.6rem;
   border: 0.1em solid #ffffff;
   border-radius: 0.12em;
   box-sizing: border-box;
@@ -29,14 +29,29 @@ button:hover {
   background-color: #ffffff;
 }
 
+button.dark {
+  background-color: #333;
+}
+
 button.flat {
   border: 0;
 }
 
-button.g:hover {
+button.g {
   background-color: #41b883;
 }
-button.r:hover {
+button.r {
   background-color: #b84941;
+}
+
+button.g:hover {
+  border: 1px solid #41b883;
+  background-color: #fff;
+  color: #333;
+}
+button.r:hover {
+  border: 1px solid #b84941;
+  background-color: #fff;
+  color: #333;
 }
 </style>

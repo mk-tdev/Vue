@@ -1,5 +1,12 @@
 <template>
   <div>
+    <base-dialog
+      v-if="isDialogVisible"
+      :title="'Do you want to delete?'"
+      @close="hideDialog"
+    >
+      <p>Are you sure?</p>
+    </base-dialog>
     <h2>All Products ({{ products.length }})</h2>
 
     <ul>
@@ -9,6 +16,7 @@
         <p>{{ p.description }}</p>
 
         <router-link :to="'/allproducts/' + p.id">View Details</router-link>
+        <base-button @click="showDialog" mode="r">Delete</base-button>
       </li>
     </ul>
   </div>
@@ -16,12 +24,21 @@
 
 <script>
 import { inject } from "vue";
+import useAlert from "../../hooks/app-alert";
+import BaseDialog from "../BaseDialog.vue";
 
 export default {
+  components: { BaseDialog },
   setup() {
     const loadedProducts = inject("products");
+    const { isDialogVisible, showDialog, hideDialog } = useAlert(false);
 
-    return { products: loadedProducts };
+    return {
+      isDialogVisible,
+      showDialog,
+      hideDialog,
+      products: loadedProducts,
+    };
   },
 };
 </script>
@@ -51,6 +68,4 @@ h3,
 h4 {
   margin: 0.5rem 0;
 }
-
-
 </style>
