@@ -3,3 +3,11 @@ git add . && git commit -m='components' && git push
 
 npm install vue-router@4
 npm install vuex@next --save
+
+
+tailwind
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+npm install tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+
+https://stackoverflow.com/questions/64925926/error-postcss-plugin-tailwindcss-requires-postcss-8

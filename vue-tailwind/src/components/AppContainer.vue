@@ -29,6 +29,42 @@
       saepe ad iure ratione mollitia, iste consectetur facere temporibus.
     </div>
   </div>
+
+  <div class="m-5 p-8 bg-gray-700 text-white">
+    <div
+      class="flex items-center flex-wrap md:gap-11 gap-y-4 md:flex-row sm:flex-row"
+    >
+      <div class="">Need Help?</div>
+
+      <div class=" flex md:gap-11 md:flex-row sm:flex-col flex-wrap gap-y-4 ">
+        <div class="flex flex-nowrap">
+          <div class="self-center">
+            <img
+              class="md:block hidden"
+              style="height: 3.5rem;"
+              src="../assets/phone.svg"
+              alt="mail"
+            />
+            <img
+              class="md:hidden block"
+              style="height: 1.5rem;"
+              src="../assets/phone.svg"
+              alt="mail"
+            />
+          </div>
+          <div class="self-center flex sm:flex-row md:flex-col gap-x-3 ">
+            <div class="whitespace-nowrap">1800 222 8888</div>
+            <div>Mon to Fri(6am to 7pm)</div>
+          </div>
+        </div>
+
+        <div class="flex flex-nowrap gap-2">
+          <img style="height: 1.5rem;" src="../assets/mail.svg" alt="mail" />
+          <div>Email us</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
