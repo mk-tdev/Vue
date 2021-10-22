@@ -30,6 +30,19 @@
     </div>
   </div>
 
+  <div
+    class="gap-2 flex flex-col-reverse md:flex-row md:justify-between border"
+  >
+    <div class="col-span-12 md:col-span-2 col-12 md:mt-10">
+      <button class="border bg-gray-700 text-white">Button A</button>
+    </div>
+    <div class="col-span-12 md:col-span-2 col-12 md:mt-10"></div>
+    <div class="col-span-12 md:col-span-2 col-12 md:mt-10"></div>
+    <div class="col-span-12 md:col-span-2 col-12 md:mt-10">
+      <button class="border bg-gray-700 text-white">Button B</button>
+    </div>
+  </div>
+
   <div class="m-5 p-8 bg-gray-700 text-white">
     <div
       class="flex items-center flex-wrap md:gap-11 gap-y-4 md:flex-row sm:flex-row"
